@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechRise Conference 2026 - Abuja Tech Summit</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0f0f15;
+            --bg-darker: #1a1a24;
+            --primary: #00d9ff;
+            --primary-dark: #00a8cc;
+            --accent: #ff6b35;
+            --text-light: #ffffff;
+            --text-muted: #a0a0b0;
+            --border: #2a2a35;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-dark);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-light);
+            background-color: var(--bg-dark);
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 15, 21, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--bg-dark);
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            border: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 217, 255, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 70px;
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, rgba(255, 107, 53, 0.05) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(0, 217, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(255, 107, 53, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            z-index: 1;
+            text-align: center;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 4rem);
+            margin-bottom: 1rem;
+            font-weight: 800;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--primary), var(--text-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            font-size: 1.1rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .meta-icon {
+            color: var(--primary);
+            font-size: 1.3rem;
+        }
+
+        .meta-text {
+            color: var(--text-muted);
+        }
+
+        .meta-text strong {
+            color: var(--text-light);
+        }
+
+        .countdown {
+            background: rgba(0, 217, 255, 0.1);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .countdown-item {
+            text-align: center;
+        }
+
+        .countdown-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .countdown-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--bg-dark);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 217, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 217, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Section */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, rgba(26, 26, 36, 1) 100%);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .highlights {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .highlight {
+            padding: 1.5rem;
+            background: rgba(0, 217, 255, 0.08);
+            border-left: 3px solid var(--primary);
+            border-radius: 8px;
+        }
+
+        .highlight h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .highlight p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .about-image {
+            height: 400px;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            border: 2px dashed var(--border);
+        }
+
+        /* Schedule Section */
+        .schedule {
+            background: var(--bg-dark);
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .schedule-card {
+            background: rgba(0, 217, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .schedule-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+        }
+
+        .schedule-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 40px rgba(0, 217, 255, 0.15);
+        }
+
+        .schedule-time {
+            color: var(--primary);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .schedule-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .schedule-description {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .schedule-speaker {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Speakers Section */
+        .speakers {
+            background: linear-gradient(135deg, rgba(26, 26, 36, 1) 0%, rgba(0, 217, 255, 0.05) 100%);
+        }
+
+        .speakers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .speaker-card {
+            background: rgba(0, 217, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .speaker-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 40px rgba(0, 217, 255, 0.15);
+        }
+
+        .speaker-avatar {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            margin: 2rem auto 1rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .speaker-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .speaker-title {
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .speaker-bio {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            padding: 0 1.5rem 1.5rem;
+            line-height: 1.6;
+        }
+
+        /* Form Section */
+        .registration {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, rgba(255, 107, 53, 0.05) 100%);
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(26, 26, 36, 0.8);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 3rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-light);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(0, 217, 255, 0.08);
+            box-shadow: 0 0 0 3px rgba(0, 217, 255, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .checkbox-group input {
+            width: auto;
+        }
+
+        .checkbox-group label {
+            margin-bottom: 0;
+            cursor: pointer;
+        }
+
+        .form-error {
+            color: var(--accent);
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .form-group.error input,
+        .form-group.error select,
+        .form-group.error textarea {
+            border-color: var(--accent);
+            background: rgba(255, 107, 53, 0.08);
+        }
+
+        .form-group.error .form-error {
+            display: block;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--bg-dark);
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.3);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-message {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            text-align: center;
+            display: none;
+        }
+
+        .form-message.success {
+            background: rgba(0, 217, 255, 0.1);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            display: block;
+        }
+
+        .form-message.error {
+            background: rgba(255, 107, 53, 0.1);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-darker);
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border);
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                margin-top: 70px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                height: 250px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .highlights {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            section h2 {
+                font-size: 1.8rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .form-container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">TECHRISE</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#schedule">Schedule</a></li>
+                <li><a href="#speakers">Speakers</a></li>
+                <li><a href="#registration">Register</a></li>
+            </ul>
+            <button class="nav-cta" onclick="document.getElementById('registration').scrollIntoView({behavior: 'smooth'})">Register Now</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>TechRise Conference 2026</h1>
+            <p style="font-size: 1.2rem; color: var(--text-muted); margin-bottom: 2rem;">Where Innovation Meets Opportunity</p>
+            
+            <div class="hero-meta">
+                <div class="meta-item">
+                    <span class="meta-icon">📅</span>
+                    <div class="meta-text"><strong>May 15-17, 2026</strong></div>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-icon">📍</span>
+                    <div class="meta-text"><strong>Abuja, Nigeria</strong></div>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-icon">👥</span>
+                    <div class="meta-text"><strong>500+ Attendees</strong></div>
+                </div>
+            </div>
+
+            <div class="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-value" id="days">0</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="hours">0</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="minutes">0</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="seconds">0</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+
+            <div class="cta-buttons">
+                <button class="btn btn-primary" onclick="document.getElementById('registration').scrollIntoView({behavior: 'smooth'})">Register Now</button>
+                <button class="btn btn-secondary" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">Learn More</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2>About the Event</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>TechRise Conference 2026 is the premier technology summit bringing together innovators, entrepreneurs, and tech leaders from across Africa and beyond.</p>
+                <p>Join us for three days of inspiring talks, interactive workshops, and networking opportunities that will reshape your perspective on technology and business.</p>
+                
+                <div class="highlights">
+                    <div class="highlight">
+                        <h3>50+ Speakers</h3>
+                        <p>Industry leaders and thought pioneers sharing insights</p>
+                    </div>
+                    <div class="highlight">
+                        <h3>20+ Workshops</h3>
+                        <p>Hands-on learning sessions on cutting-edge technologies</p>
+                    </div>
+                    <div class="highlight">
+                        <h3>Networking</h3>
+                        <p>Connect with 500+ tech professionals and investors</p>
+                    </div>
+                    <div class="highlight">
+                        <h3>Expo Zone</h3>
+                        <p>Discover innovative startups and tech solutions</p>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image">🚀</div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section id="schedule" class="schedule">
+        <h2>Event Schedule</h2>
+        <div class="schedule-grid">
+            <div class="schedule-card">
+                <div class="schedule-time">09:00 AM - 10:00 AM</div>
+                <div class="schedule-title">Opening Keynote</div>
+                <div class="schedule-description">Welcome address and vision for the future of African tech</div>
+                <div class="schedule-speaker">Speaker: Chief Adebayo</div>
+            </div>
+
+            <div class="schedule-card">
+                <div class="schedule-time">10:30 AM - 12:00 PM</div>
+                <div class="schedule-title">AI & Machine Learning Panel</div>
+                <div class="schedule-description">Deep dive into AI applications transforming industries</div>
+                <div class="schedule-speaker">Speaker: Dr. Zainab Okonkwo</div>
+            </div>
+
+            <div class="schedule-card">
+                <div class="schedule-time">1:00 PM - 2:30 PM</div>
+                <div class="schedule-title">Startup Pitch Session</div>
+                <div class="schedule-description">Watch 10 promising startups pitch to investors</div>
+                <div class="schedule-speaker">MC: Seun Olumide</div>
+            </div>
+
+            <div class="schedule-card">
+                <div class="schedule-time">3:00 PM - 4:30 PM</div>
+                <div class="schedule-title">Web3 & Blockchain Workshop</div>
+                <div class="schedule-description">Hands-on workshop on blockchain development</div>
+                <div class="schedule-speaker">Speaker: Chioma Eze</div>
+            </div>
+
+            <div class="schedule-card">
+                <div class="schedule-time">5:00 PM - 6:30 PM</div>
+                <div class="schedule-title">Networking Happy Hour</div>
+                <div class="schedule-description">Connect with fellow attendees and speakers</div>
+                <div class="schedule-speaker">Location: Main Lobby</div>
+            </div>
+
+            <div class="schedule-card">
+                <div class="schedule-time">7:00 PM onwards</div>
+                <div class="schedule-title">Gala Dinner</div>
+                <div class="schedule-description">Celebrate with live entertainment and fine dining</div>
+                <div class="schedule-speaker">Venue: Grand Ballroom</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Speakers Section -->
+    <section id="speakers" class="speakers">
+        <h2>Featured Speakers</h2>
+        <div class="speakers-grid">
+            <div class="speaker-card">
+                <div class="speaker-avatar">👨‍💼</div>
+                <h3>Chief Adebayo Okafor</h3>
+                <div class="speaker-title">Tech Entrepreneur & Investor</div>
+                <div class="speaker-bio">Founder of multiple successful tech ventures with 20 years of industry experience</div>
+            </div>
+
+            <div class="speaker-card">
+                <div class="speaker-avatar">👩‍🔬</div>
+                <h3>Dr. Zainab Okonkwo</h3>
+                <div class="speaker-title">AI Research Lead</div>
+                <div class="speaker-bio">PhD in Machine Learning, working on AI applications for African markets</div>
+            </div>
+
+            <div class="speaker-card">
+                <div class="speaker-avatar">👩‍💻</div>
+                <h3>Chioma Eze</h3>
+                <div class="speaker-title">Blockchain Developer</div>
+                <div class="speaker-bio">Leading blockchain initiatives and Web3 education in West Africa</div>
+            </div>
+
+            <div class="speaker-card">
+                <div class="speaker-avatar">🧑‍💼</div>
+                <h3>Seun Olumide</h3>
+                <div class="speaker-title">Venture Capital Manager</div>
+                <div class="speaker-bio">Managing partner of Lagos Tech Fund, investing in innovative startups</div>
+            </div>
+
+            <div class="speaker-card">
+                <div class="speaker-avatar">👨‍🚀</div>
+                <h3>David Uzor</h3>
+                <div class="speaker-title">Product Innovation Lead</div>
+                <div class="speaker-bio">Building products that solve real problems for African consumers</div>
+            </div>
+
+            <div class="speaker-card">
+                <div class="speaker-avatar">👩‍🏫</div>
+                <h3>Folake Ibrahim</h3>
+                <div class="speaker-title">Tech Policy Advocate</div>
+                <div class="speaker-bio">Shaping technology policy and digital rights in Africa</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section id="registration" class="registration">
+        <h2>Register Today</h2>
+        <div class="form-container">
+            <div class="form-message" id="formMessage"></div>
+            <form id="registrationForm" onsubmit="handleSubmit(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name *</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                        <div class="form-error">First name is required</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name *</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                        <div class="form-error">Last name is required</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                    <div class="form-error">Please enter a valid email address</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                    <div class="form-error">Phone number is required</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="company">Company/Organization</label>
+                    <input type="text" id="company" name="company">
+                </div>
+
+                <div class="form-group">
+                    <label for="ticketType">Ticket Type *</label>
+                    <select id="ticketType" name="ticketType" required>
+                        <option value="">Select a ticket type</option>
+                        <option value="early-bird">Early Bird - ₦15,000</option>
+                        <option value="regular">Regular - ₦20,000</option>
+                        <option value="vip">VIP - ₦35,000</option>
+                        <option value="student">Student - ₦8,000</option>
+                    </select>
+                    <div class="form-error">Please select a ticket type</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="interests">Areas of Interest *</label>
+                    <select id="interests" name="interests" required>
+                        <option value="">Select your interests</option>
+                        <option value="ai">Artificial Intelligence</option>
+                        <option value="blockchain">Blockchain & Web3</option>
+                        <option value="startup">Startups & Innovation</option>
+                        <option value="fintech">FinTech</option>
+                        <option value="sustainability">Sustainability & Tech</option>
+                    </select>
+                    <div class="form-error">Please select your interests</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Additional Message</label>
+                    <textarea id="message" name="message" rows="3" placeholder="Tell us anything you'd like us to know..."></textarea>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">I agree to the terms and conditions *</label>
+                </div>
+
+                <button type="submit" class="submit-btn">Complete Registration</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About Event</h4>
+                <ul>
+                    <li><a href="#about">Event Details</a></li>
+                    <li><a href="#schedule">Schedule</a></li>
+                    <li><a href="#speakers">Speakers</a></li>
+                    <li><a href="#registration">Register</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Useful Links</h4>
+                <ul>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#privacy">Privacy Policy</a></li>
+                    <li><a href="#terms">Terms & Conditions</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Get In Touch</h4>
+                <ul>
+                    <li>📧 info@techrise2026.com</li>
+                    <li>📞 +234 (0) 1 234 5678</li>
+                    <li>📍 Federal Palace, Lagos</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 TechRise Conference. All rights reserved. | Bringing Tech Innovation to Africa</p>
+        </div>
+    </footer>
+
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const eventDate = new Date('May 15, 2026 09:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+
+            if (distance < 0) {
+                document.getElementById('days').textContent = '0';
+                document.getElementById('hours').textContent = '0';
+                document.getElementById('minutes').textContent = '0';
+                document.getElementById('seconds').textContent = '0';
+            }
+        }
+
+        // Update countdown every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Form Validation
+        function validateForm() {
+            const form = document.getElementById('registrationForm');
+            const fields = form.querySelectorAll('[required]');
+            let isValid = true;
+
+            fields.forEach(field => {
+                const group = field.closest('.form-group');
+                
+                if (field.type === 'email') {
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(field.value)) {
+                        group.classList.add('error');
+                        isValid = false;
+                    } else {
+                        group.classList.remove('error');
+                    }
+                } else if (field.type === 'tel') {
+                    if (field.value.trim().length < 10) {
+                        group.classList.add('error');
+                        isValid = false;
+                    } else {
+                        group.classList.remove('error');
+                    }
+                } else if (field.type === 'checkbox') {
+                    if (!field.checked) {
+                        group.classList.add('error');
+                        isValid = false;
+                    } else {
+                        group.classList.remove('error');
+                    }
+                } else {
+                    if (field.value.trim() === '') {
+                        group.classList.add('error');
+                        isValid = false;
+                    } else {
+                        group.classList.remove('error');
+                    }
+                }
+            });
+
+            return isValid;
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            const messageDiv = document.getElementById('formMessage');
+
+            if (validateForm()) {
+                const formData = {
+                    firstName: document.getElementById('firstName').value,
+                    lastName: document.getElementById('lastName').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    company: document.getElementById('company').value,
+                    ticketType: document.getElementById('ticketType').value,
+                    interests: document.getElementById('interests').value
+                };
+
+                messageDiv.textContent = '✓ Registration successful! Check your email for confirmation.';
+                messageDiv.className = 'form-message success';
+                
+                // Reset form
+                document.getElementById('registrationForm').reset();
+                
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                    messageDiv.className = 'form-message';
+                }, 5000);
+
+                console.log('Form Data:', formData);
+            } else {
+                messageDiv.textContent = '✗ Please fill all required fields correctly.';
+                messageDiv.className = 'form-message error';
+            }
+        }
+
+        // Remove error class on input focus
+        document.addEventListener('focus', function(e) {
+            if (e.target.matches('input, select, textarea')) {
+                e.target.closest('.form-group')?.classList.remove('error');
+            }
+        }, true);
+    </script>
+</body>
+</html>
